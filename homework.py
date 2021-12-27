@@ -75,7 +75,8 @@ class Running(Training):
 
     def get_spent_calories(self):
         return ((self.COEFF_CAL_1 * self.get_mean_speed() 
-                 - self.COEFF_CAL_2) * self.weight / self.M_IN_KM * (self.duration * self.MIN_IN_HOUR))
+                 - self.COEFF_CAL_2) * self.weight / self.M_IN_KM 
+                 * (self.duration * self.MIN_IN_HOUR))
 
 
 class SportsWalking(Training):
