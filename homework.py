@@ -19,7 +19,7 @@ class InfoMessage:
                 f'Дистанция: {self.distance:.3f} км; '
                 f'Ср. скорость: {self.speed:.3f} км/ч; '
                 f'Потрачено ккал: {self.calories:.3f}.')
-           
+         
 class Training:
     """Базовый класс тренировки."""
 
@@ -42,7 +42,7 @@ class Training:
         self.action: int = action
         self.duration: float = duration
         self.weight: float = weight
-   
+
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
         return (self.action * self.LEN_STEP / self.M_IN_KM)
@@ -58,10 +58,10 @@ class Training:
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
         return InfoMessage(self.__class__.__name__,
-        self.duration,
-        self.get_distance(),
-        self.get_mean_speed(),
-        self.get_spent_calories())
+                           self.duration,
+                           self.get_distance(),
+                           self.get_mean_speed(),
+                           self.get_spent_calories())
 
 class Running(Training):
     """Тренировка: бег."""
@@ -71,7 +71,6 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
-
 
     def __init__(self, action: int,
                  duration: float,
