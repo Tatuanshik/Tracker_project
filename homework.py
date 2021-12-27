@@ -1,3 +1,6 @@
+from _typeshed import Self
+
+
 class InfoMessage:
     """Информационное сообщение о тренировке."""
 
@@ -28,10 +31,10 @@ class Training:
     LEN_STEP = 0.65
     LEN_STEP_SWIM = 1.38
     MIN_IN_HOUR = 60
-    COEFF_CALLORIE_1 = 18
-    COEFF_CALLORIE_2 = 20
-    COEFF_CALLORIE_3 = 0.035
-    COEFF_CALLORIE_4 = 0.029
+    COEFF_CAL_1 = 18
+    COEFF_CAL_2 = 20
+    COEFF_CAL_3 = 0.035
+    COEFF_CAL_4 = 0.029
     NUM_1 = 1.1
     NUM_2 = 2
 
@@ -68,8 +71,11 @@ class Training:
 class Running(Training):
     """Тренировка: бег."""
 
+    TIME_TR_MIN = Self.duration * Self.MIN_IN_HOUR
+
     def get_spent_calories(self):
-        return ((self.COEFF_CALLORIE_1 * self.get_mean_speed() - self.COEFF_CALLORIE_2) * self.weight / self.M_IN_KM * (self.duration * self.MIN_IN_HOUR))
+        return ((self.COEFF_CAL_1 * self.get_mean_speed() 
+                 - self.COEFF_CAL_2) * self.weight / self.M_IN_KM * (self.duration * self.MIN_IN_HOUR))
 
 
 class SportsWalking(Training):
@@ -83,7 +89,7 @@ class SportsWalking(Training):
         self.height = height
 
     def get_spent_calories(self) -> float:
-        return (self.COEFF_CALLORIE_3 * self.weight + (self.get_mean_speed()**2 // self.height) * self.COEFF_CALLORIE_4 * self.weight) * (self.duration * self.MIN_IN_HOUR)
+        return (self.COEFF_CAL_3 * self.weight + (self.get_mean_speed()**2 // self.height) * self.COEFF_CAL_4 * self.weight) * (self.duration * self.MIN_IN_HOUR)
 
 
 class Swimming(Training):
