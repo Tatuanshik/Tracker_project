@@ -19,7 +19,8 @@ class InfoMessage:
                 f'Дистанция: {self.distance:.3f} км; '
                 f'Ср. скорость: {self.speed:.3f} км/ч; '
                 f'Потрачено ккал: {self.calories:.3f}.')
-       
+
+
 class Training:
     """Базовый класс тренировки."""
 
@@ -63,11 +64,13 @@ class Training:
                            self.get_mean_speed(),
                            self.get_spent_calories())
 
+
 class Running(Training):
     """Тренировка: бег."""
 
     def get_spent_calories(self):
         return ((self.COEFF_CALLORIE_1 * self.get_mean_speed() - self.COEFF_CALLORIE_2) * self.weight / self.M_IN_KM * (self.duration * self.MIN_IN_HOUR))
+
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
@@ -81,6 +84,7 @@ class SportsWalking(Training):
 
     def get_spent_calories(self) -> float:
         return (self.COEFF_CALLORIE_3 * self.weight + (self.get_mean_speed()**2 // self.height) * self.COEFF_CALLORIE_4 * self.weight) * (self.duration * self.MIN_IN_HOUR)
+
 
 class Swimming(Training):
     """Тренировка: плавание."""
