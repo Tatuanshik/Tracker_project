@@ -90,14 +90,15 @@ class Swimming(Training):
     """Тренировка: плавание."""
 
     LEN_STEP = 1.38
-    def __init__ (self, action: int,
+
+    def __init__(self, action: int,
                  duration: float,
                  weight: float,
                  length_pool: float,
                  count_pool: int) -> None:
-                 super().__init__(action, duration, weight)
-                 self.length_pool = length_pool
-                 self.count_pool = count_pool
+        super().__init__(action, duration, weight)
+        self.length_pool = length_pool
+        self.count_pool = count_pool
 
     def get_distance(self) -> float:
         return (self.action * self.LEN_STEP / self.M_IN_KM)
@@ -108,6 +109,7 @@ class Swimming(Training):
     def get_spent_calories(self) -> float:
         return((self.get_mean_speed() + self.NUM_1) * self.NUM_2 * self.weight)
 
+
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
     training_dict = {'SWM': Swimming,
@@ -116,6 +118,7 @@ def read_package(workout_type: str, data: list) -> Training:
     if training_dict.get(workout_type) is None:
             return None
     return training_dict.get(workout_type)(*data)
+
 
 def main(training: Training) -> None:
     """Главная функция."""
