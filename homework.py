@@ -74,9 +74,9 @@ class Running(Training):
     TIME_TR_MIN = Self.duration * Self.MIN_IN_HOUR
 
     def get_spent_calories(self):
-       return ((self.COEFF_CAL_1 * self.get_mean_speed() 
-                - self.COEFF_CAL_2) * self.weight / self.M_IN_KM 
-                * (self.duration * self.MIN_IN_HOUR))
+        return ((self.COEFF_CAL_1 * self.get_mean_speed()
+                 - self.COEFF_CAL_2) * self.weight / self.M_IN_KM
+                 * (self.duration * self.MIN_IN_HOUR))
 
 
 class SportsWalking(Training):
@@ -90,7 +90,7 @@ class SportsWalking(Training):
         self.height = height
 
     def get_spent_calories(self) -> float:
-        return (self.COEFF_CAL_3 * self.weight 
+        return (self.COEFF_CAL_3 * self.weight
                 + (self.get_mean_speed()**2 // self.height)
                 * self.COEFF_CAL_4 * self.weight) * (self.duration * self.MIN_IN_HOUR)
 
@@ -113,7 +113,8 @@ class Swimming(Training):
         return (self.action * self.LEN_STEP / self.M_IN_KM)
 
     def get_mean_speed(self) -> float:
-        return (self.length_pool * self.count_pool / self.M_IN_KM / self.duration)
+        value_pool = self.length_pool * self.count_pool
+        return (value_pool / self.M_IN_KM / self.duration)
 
     def get_spent_calories(self) -> float:
         return((self.get_mean_speed() + self.NUM_1) * self.NUM_2 * self.weight)
