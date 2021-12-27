@@ -19,9 +19,7 @@ class InfoMessage:
         f'Дистанция: {self.distance:.3f} км; '
         f'Ср. скорость: {self.speed:.3f} км/ч; '
         f'Потрачено ккал: {self.calories:.3f}.')
-                 
-
-
+           
 class Training:
     """Базовый класс тренировки."""
     M_IN_KM = 1000
@@ -65,13 +63,10 @@ class Training:
         self.get_mean_speed(),
         self.get_spent_calories())
 
-
 class Running(Training):
     """Тренировка: бег."""
     def get_spent_calories(self):
         return ((self.COEFF_CALLORIE_1 * self.get_mean_speed() - self.COEFF_CALLORIE_2) * self.weight / self.M_IN_KM * (self.duration * self.MIN_IN_HOUR))
-
-    
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
@@ -104,7 +99,6 @@ class Swimming(Training):
     def get_spent_calories(self) -> float:
         return((self.get_mean_speed() + self.NUM_1) * self.NUM_2 * self.weight)
 
-
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
     training_dict = {'SWM': Swimming,
@@ -120,8 +114,6 @@ def main(training: Training) -> None:
     info = training.show_training_info()
     print(info.get_message())
     
-
-
 if __name__ == '__main__':
     packages = [
         ('SWM', [720, 1, 80, 25, 40]),
@@ -132,4 +124,3 @@ if __name__ == '__main__':
     for workout_type, data in packages:
         training = read_package(workout_type, data)
         main(training)
-
