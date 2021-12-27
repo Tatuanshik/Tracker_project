@@ -1,5 +1,6 @@
 class InfoMessage:
-    """Информационное сообщение о тренировке."""            
+    """Информационное сообщение о тренировке."""
+    
     def __init__(self, training_type: str,
                  duration: float,
                  distance: float,
@@ -18,9 +19,10 @@ class InfoMessage:
                 f'Дистанция: {self.distance:.3f} км; '
                 f'Ср. скорость: {self.speed:.3f} км/ч; '
                 f'Потрачено ккал: {self.calories:.3f}.')
-           
+                       
 class Training:
     """Базовый класс тренировки."""
+
     M_IN_KM = 1000
     LEN_STEP = 0.65 
     LEN_STEP_SWIM = 1.38
