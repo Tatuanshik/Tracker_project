@@ -1,5 +1,17 @@
 class InfoMessage:
     """Информационное сообщение о тренировке."""
+    def init(self, training_type: str, 
+                 duration: float,
+                 distance: float,
+                 speed: float,
+                 calories: float,
+                 ) -> None:
+                 self.training_type = training_type
+                 self.duration = duration
+                 self.distance = distance
+                 self.speed = speed
+                 self.calories = calories               
+
     def __init__(self, 
                  training_type: str, 
                  duration: float,
@@ -38,9 +50,9 @@ class Training:
                  duration: float,
                  weight: float,
                  ) -> None:
-                 self.action = action
-                 self.duration = duration
-                 self.weight = weight
+                 self.action: int = action
+                 self.duration: float = duration
+                 self.weight: float = weight
         
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
