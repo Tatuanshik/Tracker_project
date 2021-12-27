@@ -116,7 +116,7 @@ def read_package(workout_type: str, data: list) -> Training:
                      'RUN': Running,
                      'WLK': SportsWalking}
     if training_dict.get(workout_type) is None:
-            return None
+        return None
     return training_dict.get(workout_type)(*data)
 
 
@@ -124,6 +124,7 @@ def main(training: Training) -> None:
     """Главная функция."""
     info = training.show_training_info()
     print(info.get_message())
+
 
 if __name__ == '__main__':
     packages = [
