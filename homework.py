@@ -77,6 +77,7 @@ class SportsWalking(Training):
 
     COEFF_WEIGHT_WLK_1: float = 0.035
     COEFF_WEIGHT_WLK_2: float = 0.029
+
     def __init__(self, action: int,
                  duration: float,
                  weight: float,
