@@ -12,7 +12,7 @@ class InfoMessage:
     speed: float
     calories: float
     MESSAGE: str = ' '
-    
+
     def get_message(self) -> str:
         return (
             f'Тип тренировки: {self.training_type}; '
@@ -29,7 +29,7 @@ class Training:
     M_IN_KM: int = 1000
     LEN_STEP: float = 0.65
     MIN_IN_HOUR: int = 60
-    
+
     def __init__(self,
                  action: int,
                  duration: float,
@@ -125,7 +125,7 @@ def read_package(workout_type: str, data: list) -> Training:
         'SWM': Swimming,
         'RUN': Running,
         'WLK': SportsWalking
-        }
+    }
     if training_dict.get(workout_type) is None:
         return ValueError
     return training_dict.get(workout_type)(*data)
